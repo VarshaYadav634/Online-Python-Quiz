@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Conditional Loops Quiz</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            .content{
+                display: flex;
+                width:100%;
+            }
+            #qsbox,#optbox{
+                flex:1;
+            }
+            
+            .options{
+                margin:10px;
+                padding:10px;
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+            .options:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs{
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+            .navqs:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs.answered {
+                background-color: #28a745; /* green */
+                color: white;
+                font-weight: bold;
+            }
+
+            .navqs.review {
+                background-color: #dc3545; /* red */
+                color: white;
+                font-weight: bold;
+            }
+            .button{
+                background-color: #0097b2;
+                color:white;
+                border:0px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+            .mark{
+                border:1px solid #d9d9d9;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                color:#0097b2;
+            }
+            .button:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .mark:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            @media (max-width:768px){
+                .content{
+                    flex-direction: column;
+                }
+            }
+            input[type="radio"]:checked + label{
+                color:#0097b2;
+                font-size: large;
+            }
+            .navqs:hover,
+            .button:hover,
+            .mark:hover,
+            .endtest {
+                    cursor: pointer;
+                }
+            .navqs.active {
+                background-color: #0097b2;
+                color: white;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Times New Roman', Times, serif;color:#737373" bgcolor="#fafafa">
+        <div class="header" style="display: flex;height:5vh;justify-content: space-between;position:relative; padding:10px;border-bottom: 1px solid black;">
+            <div class="subject" style="align-items: left;font-size: 25px;padding:5px;margin-left: 10px;color: black;">
+                <b>Conditional Loops Quiz</b>
+            </div>
+            <div id="timer" class="time" style="border:2px solid #d9d9d9;color:red;display:flex;padding:5px;padding-left: 10px;padding-right: 10px;font-size: 25px;background-color: white;position: absolute;left: 45%;">
+                <b>00 : 00 : 00</b>
+            </div>
+            <div id="endtest" class="endtest" style="background-color: red;color:white;font-size: 25px;text-align: center;border-radius: 5px;display: flex;align-items: center;padding:5px;padding-left: 20px;padding-right: 20px;">
+                End Test
+            </div>
+        </div>
+
+        <div class="content" style="height:80vh;padding:5px;margin-top:10px;margin-bottom: 10px;">
+            <div id="qsbox" class="qs" style="margin:10px;padding:15px;overflow-y: auto;height:90%;border: 1px solid #d9d9d9;box-shadow: 0 0 5px rgba(0,0,0,0.1);background-color: white;">
+                
+            </div>
+            <div id="optbox" style="margin:10px;padding:10px;height:90%;">
+                
+            </div>
+
+
+        </div>
+
+        <div class="nav" style="margin-bottom:10px;padding:5px;display: flex;overflow-x: auto;border:2px dotted #0097b2">
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                1
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                2
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                3
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                4
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                5
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                6
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                7
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                8
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                9
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                10
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                11
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                12
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                13
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                14
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                15
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                16
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                17
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                18
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                19
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                20
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                21
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                22
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                23
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                24
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                25
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                26
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                27
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                28
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                29
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                30
+            </div>
+            
+        </div>
+
+        <div class="footer" style="height:6vh; display:flex;justify-content: space-between;">
+            <div id="prevbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Previous question</b>
+            </div>
+            <div id="markbtn" class="mark" style="margin:5px;padding:10px;">
+                <b>Mark as review</b>
+            </div>
+            <div id="nextbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Next question</b>
+            </div>
+        </div>
+    <script>
+        const questions = [
+    {
+        question: "Which keyword is used for decision-making in Python?",
+        options: ["A. decide", "B. if", "C. for", "D. choose"],
+        correctindex: 1
+    },
+    {
+        question: "What will be the output of: if 5 > 3: print('Yes')?",
+        options: ["A. No output", "B. Error", "C. Yes", "D. 5 > 3"],
+        correctindex: 2
+    },
+    {
+        question: "Which Python keyword is used to handle multiple conditions?",
+        options: ["A. else if", "B. elseif", "C. elif", "D. ifelse"],
+        correctindex: 2
+    },
+    {
+        question: "Which keyword is used for looping in Python?",
+        options: ["A. iterate", "B. repeat", "C. for", "D. loop"],
+        correctindex: 2
+    },
+    {
+        question: "What is the output of: for i in range(3): print(i)?",
+        options: ["A. 1 2 3", "B. 0 1 2", "C. 0 1 2 3", "D. 1 2"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to skip an iteration in a loop?",
+        options: ["A. skip", "B. pass", "C. continue", "D. break"],
+        correctindex: 2
+    },
+    {
+        question: "Which keyword exits a loop completely?",
+        options: ["A. skip", "B. stop", "C. exit", "D. break"],
+        correctindex: 3
+    },
+    {
+        question: "What is the result of: while False: print('Hi')?",
+        options: ["A. Infinite loop", "B. Hi", "C. No output", "D. Error"],
+        correctindex: 2
+    },
+    {
+        question: "What does the `range(2, 6)` function return?",
+        options: ["A. [2, 3, 4, 5, 6]", "B. [2, 3, 4, 5]", "C. [2, 6]", "D. [3, 4, 5, 6]"],
+        correctindex: 1
+    },
+    {
+        question: "What is the output of: if 0: print('Yes') else: print('No')?",
+        options: ["A. Yes", "B. No", "C. Error", "D. 0"],
+        correctindex: 1
+    },
+    {
+        question: "Which statement is used to do nothing in a loop or condition?",
+        options: ["A. null", "B. skip", "C. continue", "D. pass"],
+        correctindex: 3
+    },
+    {
+        question: "Can a loop be nested inside another loop in Python?",
+        options: ["A. Yes", "B. No", "C. Only while in for", "D. Only one level allowed"],
+        correctindex: 0
+    },
+    {
+        question: "What is the output of: for i in range(2): for j in range(2): print(i, j)?",
+        options: ["A. 0 0 0 1 1 0 1 1", "B. 0 1 1 2", "C. Pairs of i and j", "D. Error"],
+        correctindex: 2
+    },
+    {
+        question: "What is the output of: x = 5; if x == 5: print('Equal')?",
+        options: ["A. True", "B. Equal", "C. x", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "How many times will 'Hello' print? for i in range(1, 4): print('Hello')",
+        options: ["A. 3", "B. 2", "C. 4", "D. 1"],
+        correctindex: 0
+    },
+    {
+        question: "Which loop is best used when the number of iterations is unknown?",
+        options: ["A. for loop", "B. while loop", "C. do-while loop", "D. repeat loop"],
+        correctindex: 1
+    },
+    {
+        question: "What will be the output of: while 3 < 3: print('Hi')?",
+        options: ["A. Hi", "B. No output", "C. Error", "D. 3"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to provide an alternative block when the `if` condition is false?",
+        options: ["A. else", "B. elif", "C. except", "D. otherwise"],
+        correctindex: 0
+    },
+    {
+        question: "What is the output of: for i in range(0): print(i)?",
+        options: ["A. 0", "B. No output", "C. Error", "D. Infinite loop"],
+        correctindex: 1
+    },
+    {
+        question: "Which of the following is not a valid conditional operator?",
+        options: ["A. >", "B. ==", "C. !=", "D. =>"],
+        correctindex: 3
+    },
+    {
+        question: "How many times will the loop run: for i in range(1, 6, 2)?",
+        options: ["A. 6", "B. 3", "C. 2", "D. 5"],
+        correctindex: 1
+    },
+    {
+        question: "Which of the following loops will definitely execute at least once?",
+        options: ["A. for loop", "B. while loop", "C. do-while loop (in other languages)", "D. All of the above"],
+        correctindex: 2
+    },
+    {
+        question: "What is the output of: if True and False: print('Yes') else: print('No')?",
+        options: ["A. Yes", "B. No", "C. Error", "D. True"],
+        correctindex: 1
+    },
+    {
+        question: "What will be printed: for i in range(3): if i == 1: continue; print(i)?",
+        options: ["A. 0 1 2", "B. 0 2", "C. 1 2", "D. 0 1"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to check a condition inside a loop?",
+        options: ["A. check", "B. case", "C. if", "D. loop"],
+        correctindex: 2
+    },
+    {
+        question: "What is the output of: x = 10; if x != 10: print('No') else: print('Yes')?",
+        options: ["A. Yes", "B. No", "C. Error", "D. x"],
+        correctindex: 0
+    },
+    {
+        question: "Which expression will result in True?",
+        options: ["A. 3 > 5", "B. 2 == 2", "C. 4 != 4", "D. 1 > 2"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to evaluate the opposite of a condition?",
+        options: ["A. not", "B. inverse", "C. flip", "D. elif"],
+        correctindex: 0
+    },
+    {
+        question: "What will be printed: i = 0; while i < 3: print(i); i += 1?",
+        options: ["A. 1 2 3", "B. 0 1 2", "C. 0 1 2 3", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "Which statement is used to check multiple conditions sequentially?",
+        options: ["A. if", "B. if-else", "C. elif", "D. switch"],
+        correctindex: 2
+    }
+];
+
+
+        let currqs=0;
+        let score=0;
+        const selectedans={};
+        function loadqs(index){
+            const q=questions[index];
+            document.getElementById("qsbox").innerHTML=`<b style="font-size: large;color: #0097b2;">Question ${index+1}</b><p>${q.question}</p>`;
+            const o = q.options.map((opt, i) =>
+            `<div class="options">
+            <input type="radio" name="q${index}" id="op${i}" value="${i}">
+            <label for="op${i}">${opt}</label>
+            </div>`
+            ).join(" ");
+
+        document.getElementById("optbox").innerHTML=o;
+
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.classList.remove('active');
+            if (i === index) {
+            el.classList.add('active');
+            if (selectedans[index] !== undefined) {
+                el.classList.remove('review');
+                el.classList.add('answered');
+            }
+            }
+        });
+
+        document.querySelectorAll(`input[name="q${index}"]`).forEach((input)=>{
+            input.addEventListener("change",(e)=>{
+                const selected = parseInt(e.target.value);
+                selectedans[index]=selected;
+
+                score=0;
+                for(let i in selectedans){
+                    if(questions[i].correctindex===selectedans[i]){
+                        score++;
+                    }
+                }
+                console.log("Score:",score);
+                const nav = document.querySelectorAll('.navqs')[index];
+                nav.classList.remove('review');
+                nav.classList.add('answered');
+            });
+        });
+        }
+        document.getElementById("prevbtn").addEventListener("click",()=>{
+            if(currqs>0){
+                currqs--;
+                loadqs(currqs);
+            }
+        });
+        document.getElementById("nextbtn").addEventListener("click",()=>{
+        if(currqs<questions.length-1){
+            currqs++;
+            loadqs(currqs);
+        }
+        });
+        document.getElementById("markbtn").addEventListener("click", () => {
+            const nav = document.querySelectorAll('.navqs')[currqs];
+            nav.classList.remove('answered');
+            nav.classList.add('review');
+        });
+        loadqs(0);
+        document.getElementById("endtest").addEventListener("click", () => {
+            let finalScore = 0;
+            for (let i in selectedans) {
+                if (questions[i].correctindex === selectedans[i]) {
+                    finalScore++;
+                }
+            }
+            window.location.href = `result.html?score=${finalScore}&total=${questions.length}`;
+        });
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                currqs = i;
+                loadqs(i);
+            });
+        });
+        let timeleft=30*60;
+        function  updatetimer(){
+            const timerElement=document.getElementById("timer").querySelector("b");
+            const minutes=Math.floor(timeleft/60);
+            const seconds=timeleft%60;
+            timerElement.textContent=`00 : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+            if(timeleft<=0){
+                clearInterval(timerInterval);
+                timerElement.textContent="00 : 00 : 00";
+                alert("Time's up!");
+            }
+            timeleft--;
+        }
+        const timerInterval=setInterval(updatetimer,1000);
+        updatetimer();
+    </script>
+    </body>
+</html>

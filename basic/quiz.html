@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Python Quiz</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            .content{
+                display: flex;
+                width:100%;
+            }
+            #qsbox,#optbox{
+                flex:1;
+            }
+            
+            .options{
+                margin:10px;
+                padding:10px;
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+            .options:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs{
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+            .navqs:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs.answered {
+                background-color: #28a745; /* green */
+                color: white;
+                font-weight: bold;
+            }
+
+            .navqs.review {
+                background-color: #dc3545; /* red */
+                color: white;
+                font-weight: bold;
+            }
+            .button{
+                background-color: #0097b2;
+                color:white;
+                border:0px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+            .mark{
+                border:1px solid #d9d9d9;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                color:#0097b2;
+            }
+            .button:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .mark:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            @media (max-width:768px){
+                .content{
+                    flex-direction: column;
+                }
+            }
+            input[type="radio"]:checked + label{
+                color:#0097b2;
+                font-size: large;
+            }
+            .navqs:hover,
+            .button:hover,
+            .mark:hover,
+            .endtest {
+                    cursor: pointer;
+                }
+            .navqs.active {
+                background-color: #0097b2;
+                color: white;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Times New Roman', Times, serif;color:#737373" bgcolor="#fafafa">
+        <div class="header" style="display: flex;height:5vh;justify-content: space-between;position:relative; padding:10px;border-bottom: 1px solid black;">
+            <div class="subject" style="align-items: left;font-size: 25px;padding:5px;margin-left: 10px;color: black;">
+                <b>Basic Python Quiz for beginners</b>
+            </div>
+            <div id="timer" class="time" style="border:2px solid #d9d9d9;color:red;display:flex;padding:5px;padding-left: 10px;padding-right: 10px;font-size: 25px;background-color: white;position: absolute;left: 45%;">
+                <b>00 : 00 : 00</b>
+            </div>
+            <div id="endtest" class="endtest" style="background-color: red;color:white;font-size: 25px;text-align: center;border-radius: 5px;display: flex;align-items: center;padding:5px;padding-left: 20px;padding-right: 20px;">
+                End Test
+            </div>
+        </div>
+
+        <div class="content" style="height:80vh;padding:5px;margin-top:10px;margin-bottom: 10px;">
+            <div id="qsbox" class="qs" style="margin:10px;padding:15px;overflow-y: auto;height:90%;border: 1px solid #d9d9d9;box-shadow: 0 0 5px rgba(0,0,0,0.1);background-color: white;">
+                
+            </div>
+            <div id="optbox" style="margin:10px;padding:10px;height:90%;">
+                
+            </div>
+
+
+        </div>
+
+        <div class="nav" style="margin-bottom:10px;padding:5px;display: flex;overflow-x: auto;border:2px dotted #0097b2">
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                1
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                2
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                3
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                4
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                5
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                6
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                7
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                8
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                9
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                10
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                11
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                12
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                13
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                14
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                15
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                16
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                17
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                18
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                19
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                20
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                21
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                22
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                23
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                24
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                25
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                26
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                27
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                28
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                29
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                30
+            </div>
+            
+        </div>
+
+        <div class="footer" style="height:6vh; display:flex;justify-content: space-between;">
+            <div id="prevbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Previous question</b>
+            </div>
+            <div id="markbtn" class="mark" style="margin:5px;padding:10px;">
+                <b>Mark as review</b>
+            </div>
+            <div id="nextbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Next question</b>
+            </div>
+        </div>
+    <script>
+        const questions=[
+            {
+                question:"What is a correct syntax to output 'Hello World' in Python?",
+                options:["A. print('Hello World')","B. echo('Hello World')","C. print('Hello World')","D. echo 'Hello World'"],
+                correctindex:0
+            },
+            {
+                question: "Which of the following is a valid variable name in Python?",
+                options: ["A. 2var", "B. var_2", "C. var-2", "D. @var"],
+                correctindex: 1
+            },
+            {
+                question: "Which keyword is used to create a function in Python?",
+                options: ["A. func", "B. define", "C. def", "D. function"],
+                correctindex: 2
+            },
+            {
+                question: "What is the output of: print(type(5))?",
+                options: ["A. class 'str'", "B. class 'int'", "C. type 'int'", "D. type 'number'"],
+                correctindex: 1
+            },
+            {
+                question: "How do you insert COMMENTS in Python code?",
+                options: ["A. // comment", "B. <!-- comment -->", "C. # comment", "D. /* comment */"],
+                correctindex: 2
+            },
+            {
+                question: "Which of the following is not a data type in Python?",
+                options: ["A. list", "B. tuple", "C. dict", "D. array"],
+                correctindex: 3
+            },
+            {
+                question: "What is the result of 3 ** 2 in Python?",
+                options: ["A. 6", "B. 9", "C. 8", "D. 5"],
+                correctindex: 1
+            },
+            {
+                question: "How do you start a for loop in Python?",
+                options: ["A. for i to range(5)", "B. for (i in range(5))", "C. for i = 0; i < 5;", "D. for i in range(5):"],
+                correctindex: 3
+            },
+            {
+                question: "What is the correct file extension for Python files?",
+                options: ["A. .pt", "B. .py", "C. .pyt", "D. .python"],
+                correctindex: 1
+            },
+            {
+                question: "How do you create a list in Python?",
+                options: ["A. list = []", "B. list = {}", "C. list = ()", "D. list = <>"],
+                correctindex: 0
+            },
+            {
+                question: "Which function is used to get input from user in Python?",
+                options: ["A. get()", "B. input()", "C. read()", "D. scan()"],
+                correctindex: 1
+            },
+            {
+                question: "What is the output of: print(10 // 3)?",
+                options: ["A. 3", "B. 3.33", "C. 3.0", "D. 4"],
+                correctindex: 0
+            },
+            {
+                question: "What is the correct way to define a class in Python?",
+                options: ["A. def MyClass:", "B. class MyClass:", "C. function MyClass:", "D. create MyClass:"],
+                correctindex: 1
+            },
+            {
+                question: "Which of these will raise an error?",
+                options: ["A. x = '5' + '5'", "B. x = 5 + 5", "C. x = '5' + 5", "D. x = 5 + int('5')"],
+                correctindex: 2
+            },
+            {
+                question: "What is the use of the 'pass' statement in Python?",
+                options: ["A. To skip a loop", "B. To define a function", "C. To do nothing", "D. To break out of loop"],
+                correctindex: 2
+            },
+            {
+                question: "How do you create a dictionary in Python?",
+                options: ["A. dict = []", "B. dict = {}", "C. dict = ()", "D. dict = <>"],
+                correctindex: 1
+            },
+            {
+                question: "What is the output of: len('Hello')?",
+                options: ["A. 4", "B. 5", "C. 6", "D. Error"],
+                correctindex: 1
+            },
+            {
+                question: "Which keyword is used to handle exceptions?",
+                options: ["A. exception", "B. catch", "C. try", "D. error"],
+                correctindex: 2
+            },
+            {
+                question: "Which of these is a mutable data type in Python?",
+                options: ["A. tuple", "B. string", "C. list", "D. int"],
+                correctindex: 2
+            },
+            {
+                question: "How do you open a file in read mode in Python?",
+                options: ["A. open('file.txt')", "B. open('file.txt', 'r')", "C. file('file.txt')", "D. read('file.txt')"],
+                correctindex: 1
+            },
+            {
+                question: "What will be the output of bool([])?",
+                options: ["A. True", "B. False", "C. Error", "D. None"],
+                correctindex: 1
+            },
+            {
+            question: "What does the 'len()' function do in Python?",
+            options: ["A. Returns the last element", "B. Returns the data type", "C. Returns the length of an object", "D. Converts to integer"],
+            correctindex: 2
+        },
+        {
+            question: "Which keyword is used to check a condition in Python?",
+            options: ["A. check", "B. if", "C. for", "D. when"],
+            correctindex: 1
+        },
+        {
+            question: "What is the output of: print('2' * 3)?",
+            options: ["A. 6", "B. 222", "C. 2*3", "D. Error"],
+            correctindex: 1
+        },
+        {
+            question: "How do you write an inline comment in Python?",
+            options: ["A. <!-- comment -->", "B. // comment", "C. ## comment", "D. # comment"],
+            correctindex: 3
+        },
+        {
+            question: "Which function returns the largest item in an iterable?",
+            options: ["A. high()", "B. largest()", "C. max()", "D. top()"],
+            correctindex: 2
+        },
+        {
+            question: "What will be the output of: type([])?",
+            options: ["A. list", "B. <class 'list'>", "C. class list", "D. list type"],
+            correctindex: 1
+        },
+        {
+            question: "How do you start a while loop in Python?",
+            options: ["A. while x < 5", "B. while(x < 5){}", "C. while(x < 5):", "D. while x < 5:"],
+            correctindex: 3
+        },
+        {
+            question: "Which of the following is used to import a module in Python?",
+            options: ["A. include", "B. import", "C. load", "D. require"],
+            correctindex: 1
+        },
+        {
+            question: "What does '==' operator check?",
+            options: ["A. Assignment", "B. Reference", "C. Identity", "D. Equality"],
+            correctindex: 3
+        }];
+
+        let currqs=0;
+        let score=0;
+        const selectedans={};
+        function loadqs(index){
+            const q=questions[index];
+            document.getElementById("qsbox").innerHTML=`<b style="font-size: large;color: #0097b2;">Question ${index+1}</b><p>${q.question}</p>`;
+            const o = q.options.map((opt, i) =>
+            `<div class="options">
+            <input type="radio" name="q${index}" id="op${i}" value="${i}">
+            <label for="op${i}">${opt}</label>
+            </div>`
+            ).join(" ");
+
+        document.getElementById("optbox").innerHTML=o;
+
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.classList.remove('active');
+            if (i === index) {
+            el.classList.add('active');
+            if (selectedans[index] !== undefined) {
+                el.classList.remove('review');
+                el.classList.add('answered');
+            }
+            }
+        });
+
+        document.querySelectorAll(`input[name="q${index}"]`).forEach((input)=>{
+            input.addEventListener("change",(e)=>{
+                const selected = parseInt(e.target.value);
+                selectedans[index]=selected;
+
+                score=0;
+                for(let i in selectedans){
+                    if(questions[i].correctindex===selectedans[i]){
+                        score++;
+                    }
+                }
+                console.log("Score:",score);
+                const nav = document.querySelectorAll('.navqs')[index];
+                nav.classList.remove('review');
+                nav.classList.add('answered');
+            });
+        });
+        }
+        document.getElementById("prevbtn").addEventListener("click",()=>{
+            if(currqs>0){
+                currqs--;
+                loadqs(currqs);
+            }
+        });
+        document.getElementById("nextbtn").addEventListener("click",()=>{
+        if(currqs<questions.length-1){
+            currqs++;
+            loadqs(currqs);
+        }
+        });
+        document.getElementById("markbtn").addEventListener("click", () => {
+            const nav = document.querySelectorAll('.navqs')[currqs];
+            nav.classList.remove('answered');
+            nav.classList.add('review');
+        });
+        loadqs(0);
+        document.getElementById("endtest").addEventListener("click", () => {
+            let finalScore = 0;
+            for (let i in selectedans) {
+                if (questions[i].correctindex === selectedans[i]) {
+                    finalScore++;
+                }
+            }
+            window.location.href = `result.html?score=${finalScore}&total=${questions.length}`;
+        });
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                currqs = i;
+                loadqs(i);
+            });
+        });
+        let timeleft=30*60;
+        function  updatetimer(){
+            const timerElement=document.getElementById("timer").querySelector("b");
+            const minutes=Math.floor(timeleft/60);
+            const seconds=timeleft%60;
+            timerElement.textContent=`00 : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+            if(timeleft<=0){
+                clearInterval(timerInterval);
+                timerElement.textContent="00 : 00 : 00";
+                alert("Time's up!");
+            }
+            timeleft--;
+        }
+        const timerInterval=setInterval(updatetimer,1000);
+        updatetimer();
+    </script>
+    </body>
+</html>

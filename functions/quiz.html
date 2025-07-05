@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions Quiz</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            .content{
+                display: flex;
+                width:100%;
+            }
+            #qsbox,#optbox{
+                flex:1;
+            }
+            
+            .options{
+                margin:10px;
+                padding:10px;
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+            .options:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs{
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+            .navqs:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs.answered {
+                background-color: #28a745; /* green */
+                color: white;
+                font-weight: bold;
+            }
+
+            .navqs.review {
+                background-color: #dc3545; /* red */
+                color: white;
+                font-weight: bold;
+            }
+            .button{
+                background-color: #0097b2;
+                color:white;
+                border:0px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+            .mark{
+                border:1px solid #d9d9d9;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                color:#0097b2;
+            }
+            .button:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .mark:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            @media (max-width:768px){
+                .content{
+                    flex-direction: column;
+                }
+            }
+            input[type="radio"]:checked + label{
+                color:#0097b2;
+                font-size: large;
+            }
+            .navqs:hover,
+            .button:hover,
+            .mark:hover,
+            .endtest {
+                    cursor: pointer;
+                }
+            .navqs.active {
+                background-color: #0097b2;
+                color: white;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Times New Roman', Times, serif;color:#737373" bgcolor="#fafafa">
+        <div class="header" style="display: flex;height:5vh;justify-content: space-between;position:relative; padding:10px;border-bottom: 1px solid black;">
+            <div class="subject" style="align-items: left;font-size: 25px;padding:5px;margin-left: 10px;color: black;">
+                <b>Functions Quiz</b>
+            </div>
+            <div id="timer" class="time" style="border:2px solid #d9d9d9;color:red;display:flex;padding:5px;padding-left: 10px;padding-right: 10px;font-size: 25px;background-color: white;position: absolute;left: 45%;">
+                <b>00 : 00 : 00</b>
+            </div>
+            <div id="endtest" class="endtest" style="background-color: red;color:white;font-size: 25px;text-align: center;border-radius: 5px;display: flex;align-items: center;padding:5px;padding-left: 20px;padding-right: 20px;">
+                End Test
+            </div>
+        </div>
+
+        <div class="content" style="height:80vh;padding:5px;margin-top:10px;margin-bottom: 10px;">
+            <div id="qsbox" class="qs" style="margin:10px;padding:15px;overflow-y: auto;height:90%;border: 1px solid #d9d9d9;box-shadow: 0 0 5px rgba(0,0,0,0.1);background-color: white;">
+                
+            </div>
+            <div id="optbox" style="margin:10px;padding:10px;height:90%;">
+                
+            </div>
+
+
+        </div>
+
+        <div class="nav" style="margin-bottom:10px;padding:5px;display: flex;overflow-x: auto;border:2px dotted #0097b2">
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                1
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                2
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                3
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                4
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                5
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                6
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                7
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                8
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                9
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                10
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                11
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                12
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                13
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                14
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                15
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                16
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                17
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                18
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                19
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                20
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                21
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                22
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                23
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                24
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                25
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                26
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                27
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                28
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                29
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                30
+            </div>
+            
+        </div>
+
+        <div class="footer" style="height:6vh; display:flex;justify-content: space-between;">
+            <div id="prevbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Previous question</b>
+            </div>
+            <div id="markbtn" class="mark" style="margin:5px;padding:10px;">
+                <b>Mark as review</b>
+            </div>
+            <div id="nextbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Next question</b>
+            </div>
+        </div>
+    <script>
+       const questions = [
+    {
+        question: "Which keyword is used to define a function in Python?",
+        options: ["A. function", "B. define", "C. def", "D. fun"],
+        correctindex: 2
+    },
+    {
+        question: "What will be the output of: def greet(): print('Hi'); greet()?",
+        options: ["A. greet", "B. Hi", "C. No output", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "What does a function return if there is no return statement?",
+        options: ["A. None", "B. 0", "C. Error", "D. Undefined"],
+        correctindex: 0
+    },
+    {
+        question: "Which of the following calls a function named 'add' with 2 arguments?",
+        options: ["A. add()", "B. add(2)", "C. add(2, 3)", "D. add(2, 3, 4)"],
+        correctindex: 2
+    },
+    {
+        question: "What is the correct syntax for a function with one parameter?",
+        options: ["A. def func x:", "B. def func(x)", "C. def func(x):", "D. func def(x):"],
+        correctindex: 2
+    },
+    {
+        question: "How do you return a value from a function?",
+        options: ["A. give x", "B. return x", "C. output x", "D. print x"],
+        correctindex: 1
+    },
+    {
+        question: "What does the 'return' keyword do?",
+        options: ["A. Stops the program", "B. Exits Python", "C. Ends a function and sends back a value", "D. Continues to the next loop"],
+        correctindex: 2
+    },
+    {
+        question: "Which of the following is a valid function definition?",
+        options: ["A. def myFunc():", "B. function myFunc()", "C. define myFunc:", "D. def myFunc{}"],
+        correctindex: 0
+    },
+    {
+        question: "Can a function call itself in Python?",
+        options: ["A. No", "B. Yes, it's called recursion", "C. Only in loops", "D. Only with global keyword"],
+        correctindex: 1
+    },
+    {
+        question: "What is the output of: def add(a, b): return a + b; print(add(2, 3))?",
+        options: ["A. add", "B. 5", "C. a + b", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to define a function with no content yet?",
+        options: ["A. skip", "B. return", "C. pass", "D. continue"],
+        correctindex: 2
+    },
+    {
+        question: "Where can a function be defined in Python?",
+        options: ["A. Only at the start", "B. Inside another function", "C. Inside loops", "D. Anywhere in the code"],
+        correctindex: 3
+    },
+    {
+        question: "Which of the following is true about default parameters?",
+        options: ["A. Must be first", "B. Can be any value", "C. Must come after required ones", "D. Not allowed in Python"],
+        correctindex: 2
+    },
+    {
+        question: "What will be the output: def test(x=1): print(x); test()?",
+        options: ["A. Error", "B. 1", "C. x", "D. None"],
+        correctindex: 1
+    },
+    {
+        question: "Can a function return multiple values?",
+        options: ["A. No", "B. Yes, using a list", "C. Yes, as tuple", "D. Only strings"],
+        correctindex: 2
+    },
+    {
+        question: "What is a lambda function in Python?",
+        options: ["A. Loop", "B. A short anonymous function", "C. A decorator", "D. A class"],
+        correctindex: 1
+    },
+    {
+        question: "How do you define a lambda function that adds 2 numbers?",
+        options: ["A. lambda x y: x + y", "B. def lambda(x, y): return x + y", "C. lambda x, y: x + y", "D. function(x, y): x + y"],
+        correctindex: 2
+    },
+    {
+        question: "Which of the following functions returns the length of an object?",
+        options: ["A. count()", "B. size()", "C. len()", "D. length()"],
+        correctindex: 2
+    },
+    {
+        question: "How do you call a function named `my_function`?",
+        options: ["A. call my_function", "B. my_function()", "C. my_function[]", "D. my_function"],
+        correctindex: 1
+    },
+    {
+        question: "Which of the following is NOT a valid function name?",
+        options: ["A. myFunc", "B. _myFunc", "C. 123func", "D. func_1"],
+        correctindex: 2
+    },
+    {
+        question: "What is the scope of a variable declared inside a function?",
+        options: ["A. Global", "B. Local", "C. Static", "D. Public"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: def test(): return; print(test())?",
+        options: ["A. 0", "B. None", "C. Error", "D. True"],
+        correctindex: 1
+    },
+    {
+        question: "Which keyword is used to access a global variable inside a function?",
+        options: ["A. global", "B. Global", "C. extern", "D. static"],
+        correctindex: 0
+    },
+    {
+        question: "What happens if you define two functions with the same name?",
+        options: ["A. Error", "B. Python merges them", "C. Last definition overrides", "D. First one stays"],
+        correctindex: 2
+    },
+    {
+        question: "Can functions be stored in variables in Python?",
+        options: ["A. No", "B. Yes", "C. Only lambdas", "D. Only globals"],
+        correctindex: 1
+    },
+    {
+        question: "What is a docstring?",
+        options: ["A. String printed by function", "B. String returned by function", "C. String that documents the function", "D. Function name"],
+        correctindex: 2
+    },
+    {
+        question: "How is a docstring written?",
+        options: ["A. // comment", "B. # comment", "C. '''doc'''", "D. /*doc*/"],
+        correctindex: 2
+    },
+    {
+        question: "What is the output of: def f(x): return x*2; print(f(3))?",
+        options: ["A. 3", "B. 6", "C. x*2", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "What does `*args` do in a function?",
+        options: ["A. Accepts one argument", "B. Accepts multiple keyword arguments", "C. Accepts any number of positional arguments", "D. Rejects all arguments"],
+        correctindex: 2
+    },
+    {
+        question: "What does `**kwargs` mean in a function?",
+        options: ["A. Accepts keyword arguments as a dictionary", "B. Accepts one keyword argument", "C. Accepts list arguments", "D. Declares global variables"],
+        correctindex: 0
+    }
+];
+
+
+
+        let currqs=0;
+        let score=0;
+        const selectedans={};
+        function loadqs(index){
+            const q=questions[index];
+            document.getElementById("qsbox").innerHTML=`<b style="font-size: large;color: #0097b2;">Question ${index+1}</b><p>${q.question}</p>`;
+            const o = q.options.map((opt, i) =>
+            `<div class="options">
+            <input type="radio" name="q${index}" id="op${i}" value="${i}">
+            <label for="op${i}">${opt}</label>
+            </div>`
+            ).join(" ");
+
+        document.getElementById("optbox").innerHTML=o;
+
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.classList.remove('active');
+            if (i === index) {
+            el.classList.add('active');
+            if (selectedans[index] !== undefined) {
+                el.classList.remove('review');
+                el.classList.add('answered');
+            }
+            }
+        });
+
+        document.querySelectorAll(`input[name="q${index}"]`).forEach((input)=>{
+            input.addEventListener("change",(e)=>{
+                const selected = parseInt(e.target.value);
+                selectedans[index]=selected;
+
+                score=0;
+                for(let i in selectedans){
+                    if(questions[i].correctindex===selectedans[i]){
+                        score++;
+                    }
+                }
+                console.log("Score:",score);
+                const nav = document.querySelectorAll('.navqs')[index];
+                nav.classList.remove('review');
+                nav.classList.add('answered');
+            });
+        });
+        }
+        document.getElementById("prevbtn").addEventListener("click",()=>{
+            if(currqs>0){
+                currqs--;
+                loadqs(currqs);
+            }
+        });
+        document.getElementById("nextbtn").addEventListener("click",()=>{
+        if(currqs<questions.length-1){
+            currqs++;
+            loadqs(currqs);
+        }
+        });
+        document.getElementById("markbtn").addEventListener("click", () => {
+            const nav = document.querySelectorAll('.navqs')[currqs];
+            nav.classList.remove('answered');
+            nav.classList.add('review');
+        });
+        loadqs(0);
+        document.getElementById("endtest").addEventListener("click", () => {
+            let finalScore = 0;
+            for (let i in selectedans) {
+                if (questions[i].correctindex === selectedans[i]) {
+                    finalScore++;
+                }
+            }
+            window.location.href = `result.html?score=${finalScore}&total=${questions.length}`;
+        });
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                currqs = i;
+                loadqs(i);
+            });
+        });
+        let timeleft=30*60;
+        function  updatetimer(){
+            const timerElement=document.getElementById("timer").querySelector("b");
+            const minutes=Math.floor(timeleft/60);
+            const seconds=timeleft%60;
+            timerElement.textContent=`00 : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+            if(timeleft<=0){
+                clearInterval(timerInterval);
+                timerElement.textContent="00 : 00 : 00";
+                alert("Time's up!");
+            }
+            timeleft--;
+        }
+        const timerInterval=setInterval(updatetimer,1000);
+        updatetimer();
+    </script>
+    </body>
+</html>

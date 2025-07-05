@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Operators Quiz</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            .content{
+                display: flex;
+                width:100%;
+            }
+            #qsbox,#optbox{
+                flex:1;
+            }
+            
+            .options{
+                margin:10px;
+                padding:10px;
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+            .options:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs{
+                border: 1px solid #d9d9d9;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+            .navqs:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .navqs.answered {
+                background-color: #28a745; /* green */
+                color: white;
+                font-weight: bold;
+            }
+
+            .navqs.review {
+                background-color: #dc3545; /* red */
+                color: white;
+                font-weight: bold;
+            }
+            .button{
+                background-color: #0097b2;
+                color:white;
+                border:0px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+            .mark{
+                border:1px solid #d9d9d9;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                color:#0097b2;
+            }
+            .button:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            .mark:hover{
+                box-shadow: 0 0 30px rgba(0,0,0,0.3);
+                transform: scale(1.03);
+                transition:0.3s;
+            }
+            @media (max-width:768px){
+                .content{
+                    flex-direction: column;
+                }
+            }
+            input[type="radio"]:checked + label{
+                color:#0097b2;
+                font-size: large;
+            }
+            .navqs:hover,
+            .button:hover,
+            .mark:hover,
+            .endtest {
+                    cursor: pointer;
+                }
+            .navqs.active {
+                background-color: #0097b2;
+                color: white;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Times New Roman', Times, serif;color:#737373" bgcolor="#fafafa">
+        <div class="header" style="display: flex;height:5vh;justify-content: space-between;position:relative; padding:10px;border-bottom: 1px solid black;">
+            <div class="subject" style="align-items: left;font-size: 25px;padding:5px;margin-left: 10px;color: black;">
+                <b>Operators Quiz</b>
+            </div>
+            <div id="timer" class="time" style="border:2px solid #d9d9d9;color:red;display:flex;padding:5px;padding-left: 10px;padding-right: 10px;font-size: 25px;background-color: white;position: absolute;left: 45%;">
+                <b>00 : 00 : 00</b>
+            </div>
+            <div id="endtest" class="endtest" style="background-color: red;color:white;font-size: 25px;text-align: center;border-radius: 5px;display: flex;align-items: center;padding:5px;padding-left: 20px;padding-right: 20px;">
+                End Test
+            </div>
+        </div>
+
+        <div class="content" style="height:80vh;padding:5px;margin-top:10px;margin-bottom: 10px;">
+            <div id="qsbox" class="qs" style="margin:10px;padding:15px;overflow-y: auto;height:90%;border: 1px solid #d9d9d9;box-shadow: 0 0 5px rgba(0,0,0,0.1);background-color: white;">
+                
+            </div>
+            <div id="optbox" style="margin:10px;padding:10px;height:90%;">
+                
+            </div>
+
+
+        </div>
+
+        <div class="nav" style="margin-bottom:10px;padding:5px;display: flex;overflow-x: auto;border:2px dotted #0097b2">
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                1
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                2
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                3
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                4
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                5
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                6
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                7
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                8
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                9
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                10
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                11
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                12
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                13
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                14
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                15
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                16
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                17
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                18
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                19
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                20
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                21
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                22
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                23
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                24
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                25
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                26
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                27
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                28
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right:5px;">
+                29
+            </div>
+            <div class="navqs" style="padding:5px;width:20px;text-align: center;margin-right: 5px;">
+                30
+            </div>
+            
+        </div>
+
+        <div class="footer" style="height:6vh; display:flex;justify-content: space-between;">
+            <div id="prevbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Previous question</b>
+            </div>
+            <div id="markbtn" class="mark" style="margin:5px;padding:10px;">
+                <b>Mark as review</b>
+            </div>
+            <div id="nextbtn" class="button" style="margin:5px;padding:10px;">
+                <b>Next question</b>
+            </div>
+        </div>
+    <script>
+        const questions = [
+    {
+        question: "What is the output of: 5 + 3?",
+        options: ["A. 53", "B. 8", "C. 2", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: 10 - 4?",
+        options: ["A. 6", "B. 14", "C. -6", "D. 4"],
+        correctindex: 0
+    },
+    {
+        question: "Which operator is used for multiplication?",
+        options: ["A. x", "B. X", "C. *", "D. m"],
+        correctindex: 2
+    },
+    {
+        question: "What is the result of 10 / 3 in Python 3?",
+        options: ["A. 3", "B. 3.33", "C. 3.0", "D. 3.333..."],
+        correctindex: 3
+    },
+    {
+        question: "Which operator gives remainder?",
+        options: ["A. /", "B. %", "C. //", "D. **"],
+        correctindex: 1
+    },
+    {
+        question: "What is the output of 2 ** 3?",
+        options: ["A. 6", "B. 8", "C. 9", "D. 5"],
+        correctindex: 1
+    },
+    {
+        question: "Which operator is used for floor division?",
+        options: ["A. /", "B. //", "C. %", "D. **"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: 7 % 3?",
+        options: ["A. 1", "B. 2", "C. 0", "D. 3"],
+        correctindex: 1
+    },
+    {
+        question: "What is the output of 15 // 2?",
+        options: ["A. 7.5", "B. 8", "C. 7", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: 3 * (2 + 1)?",
+        options: ["A. 6", "B. 9", "C. 5", "D. 3"],
+        correctindex: 1
+    },
+    {
+        question: "Which is the assignment operator in Python?",
+        options: ["A. =", "B. ==", "C. :=", "D. =>"],
+        correctindex: 0
+    },
+    {
+        question: "What does == do in Python?",
+        options: ["A. Assign", "B. Compare equality", "C. Declare", "D. Define"],
+        correctindex: 1
+    },
+    {
+        question: "Which is a logical operator?",
+        options: ["A. and", "B. or", "C. not", "D. All of the above"],
+        correctindex: 3
+    },
+    {
+        question: "What is the result of: True and False?",
+        options: ["A. True", "B. False", "C. Error", "D. None"],
+        correctindex: 1
+    },
+    {
+        question: "Which operator checks if values are not equal?",
+        options: ["A. !=", "B. !==", "C. not", "D. is not"],
+        correctindex: 0
+    },
+    {
+        question: "What does the `in` operator do?",
+        options: ["A. Checks membership", "B. Compares values", "C. Assigns values", "D. Loops through list"],
+        correctindex: 0
+    },
+    {
+        question: "What will `5 > 2 and 3 < 1` return?",
+        options: ["A. True", "B. False", "C. None", "D. Error"],
+        correctindex: 1
+    },
+    {
+        question: "Which operator is used to check identity?",
+        options: ["A. is", "B. ==", "C. in", "D. =="],
+        correctindex: 0
+    },
+    {
+        question: "What will `not True` return?",
+        options: ["A. True", "B. False", "C. Error", "D. 0"],
+        correctindex: 1
+    },
+    {
+        question: "What is the output of: 3 < 5 < 7?",
+        options: ["A. True", "B. False", "C. Error", "D. None"],
+        correctindex: 0
+    },
+    {
+        question: "Which of the following is a bitwise AND operator?",
+        options: ["A. &&", "B. and", "C. &", "D. %"],
+        correctindex: 2
+    },
+    {
+        question: "What is the result of: 5 & 3?",
+        options: ["A. 7", "B. 1", "C. 3", "D. 2"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: 5 | 2?",
+        options: ["A. 7", "B. 3", "C. 2", "D. 0"],
+        correctindex: 0
+    },
+    {
+        question: "Which of these is a compound assignment operator?",
+        options: ["A. =", "B. +=", "C. =+", "D. ++"],
+        correctindex: 1
+    },
+    {
+        question: "What is the result of: a = 5; a += 2?",
+        options: ["A. 7", "B. 10", "C. 5", "D. Error"],
+        correctindex: 0
+    },
+    {
+        question: "What will `4 != 5` return?",
+        options: ["A. False", "B. True", "C. Error", "D. None"],
+        correctindex: 1
+    },
+    {
+        question: "Which operator is used to raise a number to a power?",
+        options: ["A. ^", "B. pow", "C. **", "D. ^^"],
+        correctindex: 2
+    },
+    {
+        question: "Which operator returns True if both operands are true?",
+        options: ["A. or", "B. and", "C. not", "D. xor"],
+        correctindex: 1
+    },
+    {
+        question: "Which of these is not a comparison operator?",
+        options: ["A. >", "B. ==", "C. =+", "D. <="],
+        correctindex: 2
+    },
+    {
+        question: "What is the precedence of ** vs *?",
+        options: ["A. * has higher", "B. ** has higher", "C. Same", "D. Depends"],
+        correctindex: 1
+    }
+];
+
+
+        let currqs=0;
+        let score=0;
+        const selectedans={};
+        function loadqs(index){
+            const q=questions[index];
+            document.getElementById("qsbox").innerHTML=`<b style="font-size: large;color: #0097b2;">Question ${index+1}</b><p>${q.question}</p>`;
+            const o = q.options.map((opt, i) =>
+            `<div class="options">
+            <input type="radio" name="q${index}" id="op${i}" value="${i}">
+            <label for="op${i}">${opt}</label>
+            </div>`
+            ).join(" ");
+
+        document.getElementById("optbox").innerHTML=o;
+
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.classList.remove('active');
+            if (i === index) {
+            el.classList.add('active');
+            if (selectedans[index] !== undefined) {
+                el.classList.remove('review');
+                el.classList.add('answered');
+            }
+            }
+        });
+
+        document.querySelectorAll(`input[name="q${index}"]`).forEach((input)=>{
+            input.addEventListener("change",(e)=>{
+                const selected = parseInt(e.target.value);
+                selectedans[index]=selected;
+
+                score=0;
+                for(let i in selectedans){
+                    if(questions[i].correctindex===selectedans[i]){
+                        score++;
+                    }
+                }
+                console.log("Score:",score);
+                const nav = document.querySelectorAll('.navqs')[index];
+                nav.classList.remove('review');
+                nav.classList.add('answered');
+            });
+        });
+        }
+        document.getElementById("prevbtn").addEventListener("click",()=>{
+            if(currqs>0){
+                currqs--;
+                loadqs(currqs);
+            }
+        });
+        document.getElementById("nextbtn").addEventListener("click",()=>{
+        if(currqs<questions.length-1){
+            currqs++;
+            loadqs(currqs);
+        }
+        });
+        document.getElementById("markbtn").addEventListener("click", () => {
+            const nav = document.querySelectorAll('.navqs')[currqs];
+            nav.classList.remove('answered');
+            nav.classList.add('review');
+        });
+        loadqs(0);
+        document.getElementById("endtest").addEventListener("click", () => {
+            let finalScore = 0;
+            for (let i in selectedans) {
+                if (questions[i].correctindex === selectedans[i]) {
+                    finalScore++;
+                }
+            }
+            window.location.href = `result.html?score=${finalScore}&total=${questions.length}`;
+        });
+        document.querySelectorAll('.navqs').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                currqs = i;
+                loadqs(i);
+            });
+        });
+        let timeleft=30*60;
+        function  updatetimer(){
+            const timerElement=document.getElementById("timer").querySelector("b");
+            const minutes=Math.floor(timeleft/60);
+            const seconds=timeleft%60;
+            timerElement.textContent=`00 : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+            if(timeleft<=0){
+                clearInterval(timerInterval);
+                timerElement.textContent="00 : 00 : 00";
+                alert("Time's up!");
+            }
+            timeleft--;
+        }
+        const timerInterval=setInterval(updatetimer,1000);
+        updatetimer();
+    </script>
+    </body>
+</html>
